@@ -1,21 +1,47 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { Platform } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import {createAppContainer} from 'react-navigation';
+import * as Permissions from 'expo-permissions';
+import Home from '../calendar/screens/Home';
+import CreateTask from './calendar/screens/CreateTask';
+import TodoStore from './calendar/data/TodoStore';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const AppNavigator = createStackNavigator(
+  {
+    Home,
+    CreateTask,
   },
-});
+  {
+    headerMode: 'none',
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends Component {
+  async UNSAFE_componentWillMount() {
+    await this._askForCalendarPermissions();
+    await this._askForReminderPermissions();
+  }
+
+  _askForCalendarPermissions = async () => {
+    await Permissions.askAsync(Permissions.CALENDAR);
+  };
+
+  _askForReminderPermissions = async () => {
+    if (Platform.OS === 'android') {
+      return true;
+    }
+
+    await Permissions.askAsync(Permissions.REMINDERS);
+  };
+
+  render() {
+    return (
+      <TodoStore>
+        <AppContainer />
+      </TodoStore>
+    );
+  }
+}

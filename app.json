@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AwesomeProject",
-    "slug": "AwesomeProject",
+    "name": "AMU CALENDAR",
+    "slug": "AMUCalendarAPP",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/icon.png",
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
-    }
+    },
+    "description": "Your Destination for Holidays, Notices, Events & News Updates of  The Aligarh Muslim University"
   }
 }

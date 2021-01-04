@@ -1,46 +1,61 @@
-import React from 'react';
-import { View, StyleSheet,Image } from 'react-native';
-import colors from '../config/colors';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  Image,
+  TouchableWithoutFeedback,
+} from "react-native";
 
-import AppText from './AppText';
+import Text from "./Text";
+import colors from "../config/colors";
 
-function Card({title, subTitle, image}) {
-    return (
-        <View style={styles.card}>
-            <Image style={styles.image} source ={image}/>
-            <View style={styles.detailsContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            <AppText style={styles.subTitle}>{subTitle}</AppText>
-            </View>
+function Card({ id,title, subTitle, image, onPress }) {
+  return (
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={styles.card}>
+        <View style={styles.detailsContainer}>
+        <Text style={styles.id}>{id}</Text>
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          <Text style={styles.subTitle} >
+            {subTitle}
+          </Text>
         </View>
-    );
+      </View>
+    </TouchableWithoutFeedback>
+  );
 }
 
-const styles=StyleSheet.create({
-    card:{
-        borderRadius:15,
-        backgroundColor:'white',
-        marginBottom:20,
-        overflow:"hidden"
-    },
-    image:{
-        width:'100%',
-        height:200,
-    },
-    detailsContainer:{
-        padding:20,
-    },
-    title:{
-        marginBottom:7,
-        fontWeight:"bold",
-        color: colors.primary,
-        fontSize:18,
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: 15,
+    backgroundColor: 'white',
+    borderColor:'maroon',
+    borderLeftWidth:3,
+    borderRightWidth:3,
+    borderBottomWidth:3,
+    borderTopWidth:3,
+    marginBottom: 17,
+    overflow: "hidden",
+  },
+  detailsContainer: {
+    padding: 9,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+  },
+  subTitle: {
+    color: colors.medium,
+    fontWeight: "600",
+    marginBottom: 7,
+  },
+  title: {
+    marginBottom: 7,
+    fontWeight:'bold',
+    color: colors.secondary,
+  },
+});
 
-    },
-    subTitle:{
-        color: colors.secondary,
-        fontWeight:"600",
-        fontSize:16,
-    }
-})
 export default Card;

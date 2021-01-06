@@ -6,7 +6,6 @@ import colors from "../config/colors";
 import routes from "../navigation/routes";
 import Screen from "../components/Screen";
 import Text from "../components/Text";
-import { TouchableHighlight } from "react-native-gesture-handler";
 
 function NewsScreen({ navigation }) {
   let [apiData, setApiData] = useState("");

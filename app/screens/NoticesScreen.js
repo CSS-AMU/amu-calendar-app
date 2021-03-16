@@ -1,90 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
 import routes from "../navigation/routes";
 import Screen from "../components/Screen";
-<<<<<<< HEAD
-import Text from "../components/Text"
-=======
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-
-const listings = [
-  {
-    id: 1,
-    title: "AMU Alumni Meet",
-<<<<<<< HEAD
-    subTitle: "AMU organizes Almni Meet",
-=======
-    body: "AMU organizes Almni Meet",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-  {
-    id: 2,
-    title: "Centenary Celebrations",
-<<<<<<< HEAD
-    subTitle: "AMU celebrates 100 Years of its Inception",
-=======
-    body: "AMU celebrates 100 Years of its Inception",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-  {
-    id: 3,
-    title: "AMU Alumni Meet",
-<<<<<<< HEAD
-    subTitle: "AMU organizes Almni Meet",
-=======
-    body: "AMU organizes Almni Meet",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-  {
-    id: 4,
-    title: "Centenary Celebrations",
-<<<<<<< HEAD
-    subTitle: "AMU celebrates 100 Years of its Inception",
-=======
-    body: "AMU celebrates 100 Years of its Inception",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-  {
-    id: 5,
-    title: "Centenary Celebrations",
-<<<<<<< HEAD
-    subTitle: "AMU celebrates 100 Years of its Inception",
-=======
-    body: "AMU celebrates 100 Years of its Inception",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-  {
-    id: 6,
-    title: "Centenary Celebrations",
-<<<<<<< HEAD
-    subTitle: "AMU celebrates 100 Years of its Inception",
-=======
-    body: "AMU celebrates 100 Years of its Inception",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-  },
-];
+import Text from "../components/Text";
 
 function NoticesScreen({ navigation }) {
+  let [apiData, setApiData] = useState("");
+  let [eventData, setEventData] = useState("");
+
+  fetch("https://adminbeta.amu.ac.in/api/v1/recent-notice?lang=en&page=1")
+    .then((response) => response.json())
+    .then((data) => setApiData(data.data))
+    .catch((err) => console.log(err));
+
+  fetch("https://api.amu.ac.in/api/v1/home-events?lang=en")
+    .then((response) => response.json())
+    .then((data) => setEventData(data))
+    .catch((err) => console.log(err));
+
   return (
     <Screen style={styles.screen}>
-<<<<<<< HEAD
-                  <Text style={styles.text}>NOTICES / EVENTS</Text>
-=======
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
+      <Text style={styles.text}>NOTICES / EVENTS</Text>
       <FlatList
-        data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
+        data={apiData.data}
+        keyExtractor={(data) => data.id.toString()}
         renderItem={({ item }) => (
           <Card
-              title={item.id+". "+item.title}
-<<<<<<< HEAD
-            subTitle={item.subTitle}
-=======
-            body={item.body}
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
+            title={item.title}
+            subTitle={item.created_at}
+            onPress={() => navigation.navigate(routes.NOTICES, item)}
+          />
+        )}
+      />
+      <FlatList
+        data={eventData.data}
+        keyExtractor={(data) => data.id.toString()}
+        renderItem={({ item }) => (
+          <Card
+            title={item.title}
+            subTitle={item.venue}
             onPress={() => navigation.navigate(routes.NOTICES, item)}
           />
         )}
@@ -94,16 +51,13 @@ function NoticesScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-  text:{
-    textAlign:"center",
-    fontWeight:"bold",
-    textDecorationColor:"maroon",
-    marginBottom:20,
-    fontSize:20
+  text: {
+    textAlign: "center",
+    fontWeight: "bold",
+    textDecorationColor: "maroon",
+    marginBottom: 20,
+    fontSize: 20,
   },
-=======
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
   screen: {
     padding: 20,
     backgroundColor: colors.light,

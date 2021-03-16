@@ -51,10 +51,6 @@
     "react-native-calendar-events": "^2.1.2",
     "react-native-calendar-strip": "^2.0.9",
     "react-native-calendars": "^1.1128.0",
-<<<<<<< HEAD
-=======
-    "react-native-expo-image-cache": "^4.1.0",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
     "react-native-gesture-handler": "~1.7.0",
     "react-native-i18n": "^1.0.0",
     "react-native-material-dropdown-v2": "^0.11.1",
@@ -62,10 +58,6 @@
     "react-native-paper": "^4.5.0",
     "react-native-reanimated": "~1.13.0",
     "react-native-safe-area-context": "3.1.4",
-<<<<<<< HEAD
-=======
-    "react-native-safe-modules": "^1.0.0",
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
     "react-native-screens": "~2.10.1",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",

@@ -8,11 +8,7 @@ import colors from "../../config/colors";
 
 function ListItem({
   title,
-<<<<<<< HEAD
   subTitle,
-=======
-  body,
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
   image,
   IconComponent,
   onPress,
@@ -28,17 +24,7 @@ function ListItem({
             <Text style={styles.title} numberOfLines={1}>
               {title}
             </Text>
-<<<<<<< HEAD
-            {subTitle && (
-              <Text style={styles.subTitle}>
-                {subTitle}
-=======
-            {body && (
-              <Text style={styles.body}>
-                {body}
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
-              </Text>
-            )}
+            {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
           </View>
           <MaterialCommunityIcons
             color={colors.medium}
@@ -68,11 +54,7 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
   },
-<<<<<<< HEAD
   subTitle: {
-=======
-  body: {
->>>>>>> 68872962a38cb68add2d635195871c64caaa5afc
     color: colors.medium,
   },
   title: {
